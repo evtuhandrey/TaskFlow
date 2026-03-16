@@ -62,9 +62,9 @@ class UserLoginSerializer(serializers.Serializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     """Сериализатор для профиля пользователя"""
     full_name = serializers.ReadOnlyField()
-    tasks_count = serializers.SerializerMethodField()
-    completed_tasks = serializers.SerializerMethodField()
-    active_tasks = serializers.SerializerMethodField()
+    #tasks_count = serializers.SerializerMethodField()
+    #completed_tasks = serializers.SerializerMethodField()
+    #active_tasks = serializers.SerializerMethodField()
 
 
     class Meta:
@@ -77,19 +77,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "avatar",
             "bio",
             "created_at",
-            "tasks_count",
-            "completed_tasks",
-            "active_tasks",
+            #"tasks_count",
+            #"completed_tasks",
+            #"active_tasks",
         )
 
-    def get_tasks_count(self, obj):
-        return obj.assigned_tasks.count()
+    #def get_tasks_count(self, obj):
+     #   return obj.assigned_tasks.count()
     
-    def get_completed_tasks(self, obj):
-        return obj.assigned_tasks.filter(status = "done").count()
+    #def get_completed_tasks(self, obj):
+     #   return obj.assigned_tasks.filter(status = "done").count()
     
-    def get_active_tasks(self, obj):
-        return obj.assigned_tasks.exclude(stauts = "done").count()
+    #def get_active_tasks(self, obj):
+     #   return obj.assigned_tasks.exclude(status = "done").count()
     
 
 class UserUpdateSerializer(serializers.ModelSerializer):
